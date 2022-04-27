@@ -38,7 +38,9 @@ function Welcome({}: Props) {
             <div className={`rounded-br-2xl ${commonStyles}`}>Blockchain</div>
           </div>
         </div>
-        <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10"></div>
+        <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
+          <div className="p-3 justify-end items-start flex-col rounded-xl h-40"></div>
+        </div>
       </div>
     </div>
   );
