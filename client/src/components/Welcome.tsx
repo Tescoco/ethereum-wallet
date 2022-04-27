@@ -3,13 +3,36 @@ import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 
 import { Loader } from "./";
+import { useState } from "react";
 
-type Props = {};
+type Props = {
+  placeholder: string;
+  name: string;
+  type: string;
+  handleChange: (e: any, name: string) => void;
+  value: string;
+};
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-white";
 
-function Welcome({}: Props) {
+const Input = ({ placeholder, name, type, value, handleChange }: Props) => (
+  <input
+    placeholder={placeholder}
+    type={type}
+    name={name}
+    value={value}
+    onChange={(e) => handleChange(e, name)}
+    step="0.0001"
+    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+  />
+);
+
+function Welcome() {
   const connectWallet = () => {};
+
+  const handleSubmit = () => {};
+
+  const [address, setAddress] = useState("");
 
   return (
     <div className="flex w-fill justify-center items-center">
@@ -39,7 +62,64 @@ function Welcome({}: Props) {
           </div>
         </div>
         <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
-          <div className="p-3 justify-end items-start flex-col rounded-xl h-40"></div>
+          <div className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
+            <div className="flex justify-between flex-col w-full h-full">
+              <div className="flex justify-between items-start">
+                <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
+                  <SiEthereum fontSize={21} color="#fff" />
+                </div>
+                <BsInfoCircle fontSize={21} color="#fff" />
+              </div>
+              <div>
+                <p className="text-white font-light font-sm">Address</p>
+                <p className="text-white font-semibold font-lg mt-1">
+                  Ethereum
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+            <Input
+              name="addressTo"
+              type="text"
+              placeholder="Address To"
+              handleChange={() => {}}
+              value={}
+            />
+            <Input
+              name="amount"
+              type="number"
+              placeholder="Amount (ETH)"
+              handleChange={() => {}}
+              value={}
+            />
+            <Input
+              name="keyword"
+              type="text"
+              placeholder="Keyword (Gif)"
+              handleChange={() => {}}
+              value={}
+            />
+            <Input
+              name="message"
+              type="text"
+              placeholder="Enter Message"
+              handleChange={() => {}}
+              value={}
+            />
+            <div className="h-[1px] w-full bg-gray-400 my-2" />
+            {true ? (
+              <Loader />
+            ) : (
+              <button
+                onClick={handleSubmit}
+                type="button"
+                className="text-white w-full border-[1px] p-2 border=[#3d4fc] rounded full cursor-pointer"
+              >
+                Submit
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
