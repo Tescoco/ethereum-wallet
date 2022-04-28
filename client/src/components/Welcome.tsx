@@ -84,28 +84,28 @@ function Welcome() {
               type="text"
               placeholder="Address To"
               handleChange={() => {}}
-              value={}
+              value={"teslim"}
             />
             <Input
               name="amount"
               type="number"
               placeholder="Amount (ETH)"
               handleChange={() => {}}
-              value={}
+              value={"teslim"}
             />
             <Input
               name="keyword"
               type="text"
               placeholder="Keyword (Gif)"
               handleChange={() => {}}
-              value={}
+              value={"teslim"}
             />
             <Input
               name="message"
               type="text"
               placeholder="Enter Message"
               handleChange={() => {}}
-              value={}
+              value={"teslim"}
             />
             <div className="h-[1px] w-full bg-gray-400 my-2" />
             {true ? (
