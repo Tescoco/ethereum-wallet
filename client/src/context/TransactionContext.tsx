@@ -7,7 +7,7 @@ export const TransactionContext = React.createContext({});
 
 const { ethereum } = window;
 
-interface Props {
+interface Prop {
   children: ReactElement;
 }
 
@@ -27,7 +27,7 @@ const getEthereumContract = () => {
   });
 };
 
-export const TransactionProvider = ({ children }: Props) => {
+export const TransactionProvider = ({ children }: Prop) => {
   return (
     <TransactionContext.Provider value={{ value: "text" }}>
       {children}
