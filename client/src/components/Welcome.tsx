@@ -3,7 +3,8 @@ import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 
 import { Loader } from "./";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TransactionContext } from "../context/TransactionContext";
 
 type Props = {
   placeholder: string;
@@ -28,7 +29,9 @@ const Input = ({ placeholder, name, type, value, handleChange }: Props) => (
 );
 
 function Welcome() {
-  const connectWallet = () => {};
+  const { connectWallet } = useContext(TransactionContext);
+
+  const conectWallet = () => {};
 
   const handleSubmit = () => {};
 

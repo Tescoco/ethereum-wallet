@@ -3,8 +3,6 @@ import { ethers } from "ethers";
 
 import { contractABI, contractAddress } from "../utils/constants";
 
-export const TransactionContext = React.createContext({});
-
 const { ethereum } = window;
 
 interface Prop {
@@ -26,10 +24,41 @@ const getEthereumContract = () => {
     transactionContract,
   });
 };
+export const TransactionContext = React.createContext();
 
 export const TransactionProvider = ({ children }: Prop) => {
+  const [connectedAccount, setConnectedAccount] = useState("");
+
+  const checkIfWalletIsConnect = async () => {
+    if (!ethereum) return alert("Please install Metamask");
+
+    const accounts = await ethereum.request({ method: "eth_accounts" });
+    console.log(accounts);
+  };
+
+  const connectWallet = async () => {
+    try {
+      if (!ethereum) return alert("Please install Metamask");
+
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      setConnectedAccount(accounts[0]);
+      console.log(accounts[0]);
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("No ethereum object");
+    }
+  };
+
+  useEffect(() => {
+    checkIfWalletIsConnect();
+  }, []);
+
   return (
-    <TransactionContext.Provider value={{ value: "text" }}>
+    <TransactionContext.Provider value={{ connectWallet }}>
       {children}
     </TransactionContext.Provider>
   );
