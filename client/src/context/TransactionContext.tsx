@@ -9,6 +9,10 @@ interface Prop {
   children: ReactElement;
 }
 
+const hello = () => {};
+
+export const TransactionContext = React.createContext({});
+
 const getEthereumContract = () => {
   const provider = new ethers.providers.Web3Provider(ethereum);
   const signer = provider.getSigner();
@@ -24,7 +28,6 @@ const getEthereumContract = () => {
     transactionContract,
   });
 };
-export const TransactionContext = React.createContext();
 
 export const TransactionProvider = ({ children }: Prop) => {
   const [connectedAccount, setConnectedAccount] = useState("");
